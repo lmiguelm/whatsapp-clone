@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, div {
+  height: 100%;
+}
+
+body {
+  background-color: #111;
+  color: #b1b3b5;
+  font: 400 18px Roboto, sans-serif;
+}
+
+#page {
+  display: flex;
+  justify-content: center;
+}
+
+.page-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 20px 260px;
+}
+
+@media (max-width: 1366px) {
+  .page-container {
+    padding: 0px;
+  }
+  html, body, div {
+    height: 100%;
+  }
+}

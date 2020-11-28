@@ -1,0 +1,58 @@
+aside {
+  flex: 0.5;
+  background-color: #131c21;
+}
+
+aside div.profile-container {
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: #2a2f32;
+}
+
+aside div.profile-container img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+aside div.profile-container .icons-container {
+  flex: 0.4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+aside div.input-container {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+aside div.input-container .icon-search {
+ position: absolute;
+ outline: none;
+ margin-right: 350px;
+}
+aside div.input-container input {
+  height: 35px;
+  width: 70%;
+  padding-left: 65px;
+  padding-right: 32px;
+  border-radius: 15px;
+  border: none;
+  background-color: #323739;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: #b1b3b5;
+}
