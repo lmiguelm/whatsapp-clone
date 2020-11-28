@@ -26,6 +26,10 @@ aside div.profile-container .icons-container {
   align-items: center;
 }
 
+aside div.profile-container .icons-container .icon, aside div.profile-container img {
+ cursor: pointer;
+}
+
 aside div.input-container {
   height: 50px;
   display: flex;
@@ -39,7 +43,9 @@ aside div.input-container .icon-search {
  position: absolute;
  outline: none;
  margin-right: 350px;
+ cursor: pointer;
 }
+
 aside div.input-container input {
   height: 35px;
   width: 70%;
@@ -55,4 +61,16 @@ hr {
   height: 1px;
   border: none;
   background-color: #b1b3b5;
+}
+
+aside div.conversation{ 
+  height: 850px;
+  overflow: auto;
+}
+
+@media(max-width: 1366px) {
+  aside div.conversation{ 
+    height: 590px;
+    overflow: auto;
+  }
 }

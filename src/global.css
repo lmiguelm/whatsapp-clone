@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 html, body, div {
@@ -8,7 +9,7 @@ html, body, div {
 }
 
 body {
-  background-color: #111;
+  background-color: #323739;
   color: #b1b3b5;
   font: 400 18px Roboto, sans-serif;
 }
@@ -22,14 +23,22 @@ body {
   display: flex;
   flex: 1;
   flex-direction: row;
-  padding: 20px 260px;
+  padding: 20px 250px;
 }
 
 @media (max-width: 1366px) {
   .page-container {
     padding: 0px;
   }
-  html, body, div {
-    height: 100%;
-  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: #131c21;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background: #394045;
+}
+::-webkit-scrollbar-thumb {
+  background: #394045;
 }

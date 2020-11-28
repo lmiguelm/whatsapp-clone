@@ -1,0 +1,50 @@
+div.message-container {
+  border-top: 1px solid whi;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #323739;
+  height: 60px;
+  
+  cursor: pointer;
+
+  transition: ease 0.2s;
+}
+
+div.message-container:hover {
+  background-color: #323739;
+}
+
+div.message-container > span{
+  font-size: 12px;
+}
+
+div.message-container img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+div.message-container .people-container {
+  display: flex;
+  justify-content: space-between;
+}
+div.message-container .people-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.message-container .people-container span{
+ margin-left: 15px;
+}
+
+div.message-container .people-container .message-area .message{
+ display: flex;
+ margin-left: 15px;
+}
+div.message-container .people-container .message-area > span{
+ font-size: 17px;
+}
+div.message-container .people-container .message-area .message > span{
+ margin-left: 4px;
+ font-size: 14px;
+}
