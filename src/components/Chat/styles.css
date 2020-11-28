@@ -1,4 +1,50 @@
 #chat {
   flex: 1;
-  background-color: aqua;
+}
+
+#chat .header-container {
+  display: flex;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  background-color: #2a2f32;
+  border-left: 1px solid #394045;
+
+  cursor: pointer;
+}
+
+#chat .header-container img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+#chat .header-container .header-people{
+  display: flex;
+  align-items: center;
+}
+
+#chat .header-container .header-option{
+  display: flex;
+  align-items: center;
+}
+
+#chat .header-container .header-option icon:nth-child(1){
+ margin-left: 200px;
+}
+
+#chat .header-container .header-people .info{
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat .header-container .header-people .info strong{
+ font-size: 16px;
+}
+#chat .header-container .header-people .info span{
+ font-size: 13px;
 }

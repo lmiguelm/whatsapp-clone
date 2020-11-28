@@ -37,6 +37,8 @@ aside div.input-container {
   align-items: center;
 
   position: relative;
+
+  border-bottom: 1px solid #323739;
 }
 
 aside div.input-container .icon-search {
