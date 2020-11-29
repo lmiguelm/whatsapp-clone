@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiMoreVertical, FiSearch } from 'react-icons/fi';
+import { IoAttach, IoHappyOutline, IoMic } from 'react-icons/io5'
 import './styles.css';
 
 export default function Chat() {
@@ -17,6 +18,19 @@ export default function Chat() {
           <FiSearch className="icon" size={24} />
           <FiMoreVertical className="icon" size={24} />
         </div>
+      </div>
+
+      <div className="content-container">
+
+      </div>
+
+      <div className="footer-container">
+        <div className="icons-media">
+          <IoHappyOutline size={30} />
+          <IoAttach size={30} />
+        </div>
+        <input type="text" placeholder="Digite um mensagem" />
+        <IoMic className="mic" size={30} />
       </div>
     </div>
   );

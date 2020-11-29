@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: stretch;
 
-  background-color: #2a2f32;
+  background-color: #1E2428;
   border-left: 1px solid #394045;
 
   cursor: pointer;
@@ -47,4 +47,61 @@
 }
 #chat .header-container .header-people .info span{
  font-size: 13px;
+}
+
+#chat .content-container {
+  height: 85.5%;
+}
+
+
+
+#chat .content-container {
+  background-image: url(../../assets/background.jpg);
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+
+#chat .footer-container {
+  width: 48.2%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+
+  background-color: #1E2428;
+  border-left: 1px solid #394045;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#chat .footer-container .icons-media {
+ display: flex;
+ flex: 1;
+ justify-content: space-around;
+ cursor: pointer;
+}
+
+#chat .footer-container .mic {
+ flex: 1;
+ cursor: pointer;
+}
+#chat .footer-container input {
+  width: 75%;
+  height: 42px;
+  padding: 0px 32px;
+  border-radius: 15px;
+  border: none;
+  background-color: #323739;
+
+  font-size: 16px;
+}
+
+@media(max-width: 1366px) {
+  #chat .footer-container {
+    width: 65%;
+  }
 }
