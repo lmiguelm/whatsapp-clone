@@ -56,29 +56,28 @@
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 820px;
-  overflow: auto;
+  height: 835px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   padding: 10px;
-  overflow: auto;
+  overflow: scroll;
 }
 
 @media(max-width: 1366px) {
   #chat .content-container{ 
-    height: 560px;
+    height: 570px;
   }
 }
 
 #chat .content-container .balon {
-  height: 20px;
+  height: 15px;
   background-color: #054740;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 5px;
-  min-height: 20px;
+  min-height: 15px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

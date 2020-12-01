@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useRef, useEffect } from 'react';
 import { FiMoreVertical, FiSearch } from 'react-icons/fi';
 import { IoAttach, IoHappyOutline, IoMic, IoSend, IoCheckmarkDoneOutline, IoChevronDown } from 'react-icons/io5';
 
@@ -20,11 +20,17 @@ interface ChatProps {
   contactSelected: Contact;
 }
 
+
 const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, name, number, picture, time } }) => {
 
   const [msg, setMsg] = useState('');
   const [msgs, setMsgs] = useState<string[]>([]);
   const [info, setInfo] = useState(false);
+  const div = useRef<HTMLDivElement | null>(null);
+
+  if (div.current?.scrollTop) {
+    div.current.scrollTop = div.current?.scrollHeight;
+  }
 
   function KeyPress(e: React.KeyboardEvent) {
     if (e.key === 'Enter' && msg !== '') {
@@ -66,12 +72,12 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
           </div>
         </div>
 
-        <div className="content-container">
-          {msgs.map(msg => (
-            <div className="balon" onMouseEnter={() => setInfo(true)} onMouseOut={() => setInfo(false)}>
+        <div className="content-container" ref={div}>
+          {msgs.map((msg, key) => (
+            <div key={key} className="balon" onMouseEnter={() => setInfo(true)} onMouseOut={() => setInfo(false)}>
               <p>{msg}</p>
               <div className="status" >
-                <span>0:00</span>
+                <span>{new Date().getHours()}:{new Date().getMinutes()}</span>
                 {!info ? (
                   <IoCheckmarkDoneOutline className="icon-balon" size={17} />
                 ) : (

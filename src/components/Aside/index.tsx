@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { FiMoreVertical, FiMessageSquare, FiCircle, FiSearch, FiArrowLeft, FiX } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { FiMoreVertical, FiSearch, FiArrowLeft, FiX } from 'react-icons/fi';
+import { BiCommentDetail } from 'react-icons/bi';
+import { RiDonutChartLine } from 'react-icons/ri';
 
 import Message from '../Message';
 
@@ -47,8 +49,8 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         <img src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
 
         <div className="icons-container">
-          <FiCircle className="icon" size={24} />
-          <FiMessageSquare className="icon" size={24} />
+          <RiDonutChartLine className="icon" size={24} />
+          <BiCommentDetail className="icon" size={24} />
           <FiMoreVertical className="icon" size={24} />
         </div>
       </div>
