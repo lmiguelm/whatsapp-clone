@@ -46,6 +46,15 @@ aside div.input-container .icon-search {
  outline: none;
  margin-right: 350px;
  cursor: pointer;
+ transition: ease 0.2s;
+}
+
+aside div.input-container .icon-search-right {
+ position: absolute;
+ outline: none;
+ margin-left: 350px;
+ cursor: pointer;
+ transition: ease 0.2s;
 }
 
 aside div.input-container input {
@@ -56,6 +65,15 @@ aside div.input-container input {
   border-radius: 15px;
   border: none;
   background-color: #323739;
+  color: #ddd;
+
+  
+}
+
+aside div.input-container input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
 }
 
 hr {

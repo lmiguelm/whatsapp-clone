@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 import { FiMoreVertical, FiSearch } from 'react-icons/fi';
-import { IoAttach, IoHappyOutline, IoMic } from 'react-icons/io5';
+import { IoAttach, IoHappyOutline, IoMic, IoSend, IoCheckmarkDoneOutline, IoChevronDown } from 'react-icons/io5';
 
 
 import './styles.css';
@@ -21,6 +21,22 @@ interface ChatProps {
 }
 
 const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, name, number, picture, time } }) => {
+
+  const [msg, setMsg] = useState('');
+  const [msgs, setMsgs] = useState<string[]>([]);
+  const [info, setInfo] = useState(false);
+
+  function KeyPress(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' && msg !== '') {
+      handleSendMsg();
+    }
+  }
+
+  function handleSendMsg() {
+    setMsgs([...msgs, msg]);
+    setMsg('');
+  }
+
   if (id === 999 && name === 'initial' && picture === 'initial' && message === 'initial') {
     return (
       <div id="chat-none">
@@ -51,7 +67,19 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
         </div>
 
         <div className="content-container">
-
+          {msgs.map(msg => (
+            <div className="balon" onMouseEnter={() => setInfo(true)} onMouseOut={() => setInfo(false)}>
+              <p>{msg}</p>
+              <div className="status" >
+                <span>0:00</span>
+                {!info ? (
+                  <IoCheckmarkDoneOutline className="icon-balon" size={17} />
+                ) : (
+                    <IoChevronDown className="icon-balon" size={17} />
+                  )}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="footer-container">
@@ -59,8 +87,12 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
             <IoHappyOutline size={30} />
             <IoAttach size={30} />
           </div>
-          <input type="text" placeholder="Digite um mensagem" />
-          <IoMic className="mic" size={30} />
+          <input onKeyPress={KeyPress} type="text" value={msg} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMsg(e.target.value)} placeholder="Digite um mensagem" />
+          {msg == '' ? (
+            <IoMic size={30} className="mic" />
+          ) : (
+              <IoSend size={30} className="mic" onClick={handleSendMsg} />
+            )}
         </div>
       </div>
     );

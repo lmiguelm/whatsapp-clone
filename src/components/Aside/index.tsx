@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiMoreVertical, FiMessageSquare, FiCircle, FiSearch } from 'react-icons/fi';
+import { FiMoreVertical, FiMessageSquare, FiCircle, FiSearch, FiArrowLeft, FiX } from 'react-icons/fi';
 
 import Message from '../Message';
 
@@ -23,6 +23,24 @@ interface AsideProps {
 
 
 const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
+
+  const [text, setText] = useState('');
+  const [focused, setFocused] = useState(false);
+
+  function filterContacts() {
+    if (text == '') {
+      return contacts;
+    } else {
+      return contacts.filter(c => c.name.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) >= 0).sort();
+    }
+  }
+
+  function backSearch() {
+    setText('');
+    setFocused(false);
+    filterContacts();
+  }
+
   return (
     <aside>
       <div className="profile-container">
@@ -36,12 +54,19 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
       </div>
 
       <div className="input-container">
-        <input type="text" placeholder="Procurar ou começar uma nova conversa" />
-        <FiSearch className="icon-search" size={15} />
+        <input onFocus={() => setFocused(true)} type="text" value={text} onChange={e => setText(e.target.value)} placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''} />
+        {focused ? (
+          <>
+            <FiArrowLeft className="icon-search" onClick={backSearch} size={20} />
+            <FiX className="icon-search-right" onClick={backSearch} size={20} />
+          </>
+        ) : (
+            <FiSearch className="icon-search" size={20} />
+          )}
       </div>
 
       <div className="conversation">
-        {contacts.map(contact => (
+        {filterContacts().map(contact => (
           <Message key={contact.id} contact={contact} callback={contactSelected => callback(contactSelected)} />
         ))}
       </div>
