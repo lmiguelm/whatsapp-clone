@@ -107,3 +107,30 @@
     width: 65%;
   }
 }
+
+#chat-none {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #262d31;
+  padding-top: 120px;
+}
+#chat-none img {
+  height: 600px;
+  width: 350px;
+}
+#chat-none .text-container h2 {
+ margin-top: 40px;
+ margin-bottom: 20px;
+ text-align: center;
+ font-weight: 400;
+ font-size: 30px;
+}
+#chat-none .text-container p {
+ line-height: 25px;
+ text-align: center;
+ font-size: 14px;
+}
+

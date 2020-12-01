@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiMoreVertical, FiMessageSquare, FiCircle, FiSearch } from 'react-icons/fi';
 
 import Message from '../Message';
 
 import './styles.css';
 
-export default function Aside() {
+
+interface Contact {
+  id: number;
+  name: string;
+  picture: string;
+  number: string;
+  status: string;
+  message: string;
+  time: string;
+}
+
+interface AsideProps {
+  contacts: Contact[];
+  callback(contact: Contact): void;
+}
+
+
+const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
   return (
     <aside>
       <div className="profile-container">
@@ -24,22 +41,11 @@ export default function Aside() {
       </div>
 
       <div className="conversation">
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
+        {contacts.map(contact => (
+          <Message key={contact.id} contact={contact} callback={contactSelected => callback(contactSelected)} />
+        ))}
       </div>
     </aside>
   );
 }
+export default Aside;

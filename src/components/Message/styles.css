@@ -20,8 +20,8 @@ div.message-container > span{
 }
 
 div.message-container img {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 }
 div.message-container .people-container {
