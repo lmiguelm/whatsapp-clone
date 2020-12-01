@@ -1,0 +1,80 @@
+div#drawer-profile {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+div#drawer-profile {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #131c21;
+}
+
+div#drawer-profile .header-profile {
+  height: 70px;
+  background-color: #323739;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: #ddd;
+}
+
+div#drawer-profile img{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  align-self: center;
+  cursor: pointer;
+}
+
+div#drawer-profile .name-container{
+  font-weight: 700;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 30px 10px;
+  border-bottom: 4px solid #0e161a;
+}
+
+div#drawer-profile .name-container span{
+  color: #054740;
+}
+
+div#drawer-profile .name-container .input-container {
+  display: flex;
+  align-items: center;
+}
+
+div#drawer-profile .name-container .input-container input{
+ background-color: #131c21;
+ font-weight: 400;
+ border: none;
+ color: #ddd;
+ height: 30px;
+ font-size: 16px;
+ max-width: 80%;
+ flex-wrap: wrap;
+ width: 100%;
+}
+div#drawer-profile .name-container .input-container input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+div#drawer-profile .name-container .input-container .icon-edit{
+  position: absolute;
+  outline: none;
+  margin-left: 350px;
+  color: #ddd;
+}
+
+div#drawer-profile .info {
+  height: 50px;
+  color: #6d7275;
+  font-size: 12px;
+  padding: 14px 30px 10px;
+  line-height: 20px;
+}
