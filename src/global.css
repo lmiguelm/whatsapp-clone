@@ -53,3 +53,7 @@ body {
   color: #ddd;
 }
 
+.MuiDialog-paper	 {
+  height: 300px;
+  width: 440px;
+}

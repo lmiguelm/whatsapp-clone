@@ -14,7 +14,7 @@ const DeleteConversation: React.FC<DeleteConversationProps> = ({ name, callback 
 
       <div className="button-container">
         <button onClick={() => callback(false)} className="button cancel">Cancelar</button>
-        <button onClick={() => callback(false)} className="button">Limpar</button>
+        <button onClick={() => callback(false)} className="button">Apagar</button>
       </div>
     </div>
   );
