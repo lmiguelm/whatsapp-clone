@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiMoreVertical, FiSearch, FiArrowLeft, FiX } from 'react-icons/fi';
 import { BiCommentDetail } from 'react-icons/bi';
 import { RiDonutChartLine } from 'react-icons/ri';
 
-import { Menu, MenuItem, Badge } from '@material-ui/core';
+import { Menu, MenuItem, Dialog } from '@material-ui/core';
 
 import Message from '../Message';
 import Drawer from '../Drawer';
 import Profile from '../Drawer/Profile';
 import Contacts from '../Drawer/Contacts';
+import Status from '../Dialog/Status';
+
+import axios from 'axios';
 
 import './styles.css';
 
@@ -36,6 +39,25 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
   const [showDrawerProfile, SetShowDrawerProfile] = useState(false);
   const [showDrawerContact, SetShowDrawerContact] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [showStatus, setStatus] = useState(false);
+  const [user, setUser] = useState<Contact>({
+    name: '',
+    id: 0,
+    message: '',
+    number: '',
+    picture: '',
+    status: '',
+    time: ''
+  });
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  async function loadUser() {
+    const res = await axios.get('http://localhost:8080/user');
+    setUser(res.data);
+  }
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -63,12 +85,10 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     <>
       <aside>
         <div className="profile-container">
-          <img onClick={() => SetShowDrawerProfile(true)} src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
+          <img onClick={() => SetShowDrawerProfile(true)} src={user.picture} alt="profile" />
 
           <div className="icons-container">
-            <Badge overlap="circle" color="primary" variant="dot" invisible={false} style={{ paddingBottom: '3px' }} >
-              <RiDonutChartLine className="icon" size={24} />
-            </Badge>
+            <RiDonutChartLine onClick={() => setStatus(true)} className="icon" size={24} />
             <BiCommentDetail onClick={() => SetShowDrawerContact(true)} className="icon" size={24} />
             <FiMoreVertical className="icon" size={24} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
           </div>
@@ -126,6 +146,14 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         <MenuItem onClick={handleClose}>Configurações</MenuItem>
         <MenuItem onClick={handleClose}>Desconectar</MenuItem>
       </Menu>
+
+      <Dialog
+        fullScreen
+        open={showStatus}
+        onClose={() => setStatus(false)}
+      >
+        <Status user={user} contacts={contacts} callback={res => setStatus(res)} />
+      </Dialog>
     </>
   );
 }

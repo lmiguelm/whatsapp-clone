@@ -1,0 +1,81 @@
+div#status {
+  display: flex;
+  background-color: #000;
+  padding: 20px 250px;
+}
+
+@media (max-width: 1366px) {
+  div#status {
+    padding: 0px;
+  }
+}
+
+div#status aside {
+  flex: 1;
+  background-color: #141414;
+  color: #ddd;
+  padding: 30px 20px
+}
+
+div#status aside .my-status {
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-bottom: 1px solid #323739;
+}
+
+div#status aside .my-status .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 20px;
+  line-height: 25px;
+}
+
+div#status aside .my-status .info p {
+  font-size: 16px; 
+  color: #fff;
+}
+div#status aside .my-status .info span {
+  font-size: 12px;
+  color: #cecfd0;
+}
+
+div#status aside .my-status img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+
+div#status .content-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 20px
+}
+
+div#status .content-container .icon-close {
+  color: #ddd;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+div#status .content-container .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div#status .content-container .icon-status {
+  margin-bottom: 50px;
+  color: #cecfd0;
+}
+
+div#status .content-container .content span {
+  color: #cecfd0;
+}
