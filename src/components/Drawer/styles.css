@@ -1,11 +1,21 @@
 .MuiDrawer-paperAnchorLeft	{
   width: 25%;
-  margin-left: 252px;
   margin-top: 20px;
+  margin-left: 252px;  
+}
+
+.MuiDrawer-paperAnchorRight	{
+  width: 25%;
+  margin-top: 20px;
+  margin-right: 252px;
 }
 
 @media(max-width: 1366px) {
   .MuiDrawer-paperAnchorLeft	{
+    margin: 0px;
+    width: 33%;
+  }
+  .MuiDrawer-paperAnchorRight	{
     margin: 0px;
     width: 33%;
   }
