@@ -148,12 +148,6 @@
   outline: 0;
 }
 
-@media(max-width: 1366px) {
-  #chat .footer-container {
-    width: 65%;
-  }
-}
-
 #chat-none {
   flex: 1;
   display: flex;
@@ -164,8 +158,8 @@
   padding-top: 120px;
 }
 #chat-none img {
-  height: 600px;
-  width: 350px;
+  height: 700px;
+  width: 400px;
 }
 #chat-none .text-container h2 {
  margin-top: 40px;
@@ -180,4 +174,12 @@
  font-size: 14px;
 }
 
-
+@media(max-width: 1366px) {
+  #chat .footer-container {
+    width: 65%;
+  }
+  #chat-none img {
+    height: 600px;
+    width: 330px;
+  }
+}

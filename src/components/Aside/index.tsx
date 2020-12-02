@@ -36,8 +36,8 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
 
   const [text, setText] = useState('');
   const [focused, setFocused] = useState(false);
-  const [showDrawerProfile, SetShowDrawerProfile] = useState(false);
-  const [showDrawerContact, SetShowDrawerContact] = useState(false);
+  const [showDrawerProfile, setShowDrawerProfile] = useState(false);
+  const [showDrawerContact, setShowDrawerContact] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [showStatus, setStatus] = useState(false);
   const [user, setUser] = useState<Contact>({
@@ -85,11 +85,11 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     <>
       <aside>
         <div className="profile-container">
-          <img onClick={() => SetShowDrawerProfile(true)} src={user.picture} alt="profile" />
+          <img onClick={() => setShowDrawerProfile(true)} src={user.picture} alt="profile" />
 
           <div className="icons-container">
             <RiDonutChartLine onClick={() => setStatus(true)} className="icon" size={24} />
-            <BiCommentDetail onClick={() => SetShowDrawerContact(true)} className="icon" size={24} />
+            <BiCommentDetail onClick={() => setShowDrawerContact(true)} className="icon" size={24} />
             <FiMoreVertical className="icon" size={24} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
           </div>
         </div>
@@ -117,7 +117,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         anchor="left"
         show={showDrawerProfile}
       >
-        <Profile callback={res => SetShowDrawerProfile(res)} />
+        <Profile callback={res => setShowDrawerProfile(res)} />
       </Drawer>
 
       <Drawer
@@ -126,7 +126,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
       >
         <Contacts contacts={contacts}
           contactSelected={contactSelected => callback(contactSelected)}
-          callback={res => SetShowDrawerContact(res)}
+          callback={res => setShowDrawerContact(res)}
         />
       </Drawer>
 
@@ -140,7 +140,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
       >
         <MenuItem onClick={handleClose}>Novo grupo</MenuItem>
         <MenuItem onClick={handleClose}>Criar uma sala</MenuItem>
-        <MenuItem onClick={handleClose}>Perfil</MenuItem>
+        <MenuItem onClick={() => setShowDrawerProfile(true)}>Perfil</MenuItem>
         <MenuItem onClick={handleClose}>Arquivadas</MenuItem>
         <MenuItem onClick={handleClose}>Favoritas</MenuItem>
         <MenuItem onClick={handleClose}>Configurações</MenuItem>
