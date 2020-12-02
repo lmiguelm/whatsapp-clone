@@ -2,12 +2,15 @@ import React, { useState, useRef } from 'react';
 import { FiMoreVertical, FiSearch } from 'react-icons/fi';
 import { IoAttach, IoHappyOutline, IoMic, IoSend, IoCheckmarkDoneOutline, IoChevronDown } from 'react-icons/io5';
 import { Menu, MenuItem } from '@material-ui/core';
+import { Dialog } from '@material-ui/core';
 import ContactData from '../../components/Drawer/ContactData';
 import Drawer from '../../components/Drawer';
+
 
 import './styles.css';
 import Logo from '../../assets/index.png';
 import SearchMessage from '../Drawer/SearchMessage';
+import SilenceNotification from '../Dialog/SilenceNotifications';
 
 interface Contact {
   id: number;
@@ -33,7 +36,7 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [showDrawerContactData, setShowDrawerContactData] = useState(false);
   const [showDrawerSearchMessage, setShowDrawerSearchMessage] = useState(false);
-  const [showDrawer, setShowDrawer] = useState(false);
+  const [showDialogSilence, setShowDialogSilence] = useState(false);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -126,9 +129,9 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
           onClose={handleClose}
           onMouseDown={handleClose}
         >
-          <MenuItem onClick={handleClose}>Dados do contato</MenuItem>
+          <MenuItem onClick={() => setShowDrawerContactData(true)}>Dados do contato</MenuItem>
           <MenuItem onClick={handleClose}>Silenciar mensagens</MenuItem>
-          <MenuItem onClick={handleClose}>Silenciar notificações</MenuItem>
+          <MenuItem onClick={() => setShowDialogSilence(true)}>Silenciar notificações</MenuItem>
           <MenuItem onClick={handleClose}>Limpar conversa</MenuItem>
           <MenuItem onClick={handleClose}>Apagar conversa</MenuItem>
         </Menu>
@@ -150,6 +153,13 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
         >
           <SearchMessage contact={{ id, status, message, name, number, picture, time }} callback={res => setShowDrawerSearchMessage(res)} />
         </Drawer>
+
+        <Dialog
+          open={showDialogSilence}
+          onClose={() => setShowDialogSilence(false)}
+        >
+          <SilenceNotification callback={res => setShowDialogSilence(res)} name={name} />
+        </Dialog>
       </>
     );
   }
