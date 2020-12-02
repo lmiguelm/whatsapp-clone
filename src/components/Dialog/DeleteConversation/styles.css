@@ -1,0 +1,50 @@
+.MuiDialog-paper	 {
+  height: 200px;
+  width: 400px;
+}
+
+div#delete-conversation {
+  flex: 1;
+  background-color: #3b4042;
+  padding: 22px 24px 20px;
+  color: #ddd;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+div#delete-conversation span {
+  font-size: 18px;
+}
+
+div#delete-conversation .button-container {
+  align-self: flex-end;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div#delete-conversation .button-container .button {
+  height: 40px;
+  border: none;
+  padding: 10px 24px;
+  background-color: #00af9c;
+  color: #131c21;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+div#delete-conversation .button-container .button:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+div#delete-conversation .button-container .cancel{
+  margin-right: 30px;
+  background-color: transparent;
+  color: #00af9c;
+}

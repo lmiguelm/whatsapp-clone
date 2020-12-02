@@ -1,3 +1,8 @@
+.MuiDialog-paper	 {
+  height: 300px;
+  width: 440px;
+}
+
 div #silence-container {
   flex: 1;
   background-color: #3b4042;

@@ -11,6 +11,8 @@ import './styles.css';
 import Logo from '../../assets/index.png';
 import SearchMessage from '../Drawer/SearchMessage';
 import SilenceNotification from '../Dialog/SilenceNotifications';
+import DeleteMessages from '../Dialog/DeleteMessages';
+import DeleteConversation from '../Dialog/DeleteConversation';
 
 interface Contact {
   id: number;
@@ -37,6 +39,8 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
   const [showDrawerContactData, setShowDrawerContactData] = useState(false);
   const [showDrawerSearchMessage, setShowDrawerSearchMessage] = useState(false);
   const [showDialogSilence, setShowDialogSilence] = useState(false);
+  const [showDialogDelete, setShowDialogDelete] = useState(false);
+  const [showDialogDeleteConversation, setShowDialogDeleteConversation] = useState(false);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -132,8 +136,8 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
           <MenuItem onClick={() => setShowDrawerContactData(true)}>Dados do contato</MenuItem>
           <MenuItem onClick={handleClose}>Silenciar mensagens</MenuItem>
           <MenuItem onClick={() => setShowDialogSilence(true)}>Silenciar notificações</MenuItem>
-          <MenuItem onClick={handleClose}>Limpar conversa</MenuItem>
-          <MenuItem onClick={handleClose}>Apagar conversa</MenuItem>
+          <MenuItem onClick={() => setShowDialogDelete(true)}>Limpar conversa</MenuItem>
+          <MenuItem onClick={() => setShowDialogDeleteConversation(true)}>Apagar conversa</MenuItem>
         </Menu>
 
         <Drawer
@@ -159,6 +163,25 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
           onClose={() => setShowDialogSilence(false)}
         >
           <SilenceNotification callback={res => setShowDialogSilence(res)} name={name} />
+        </Dialog>
+
+        <Dialog
+          open={showDialogDelete}
+          onClose={() => setShowDialogDelete(false)}
+        >
+          <DeleteMessages name={name} callback={(closeDialog: boolean, deleteMsgs: boolean) => {
+            setShowDialogDelete(closeDialog);
+            if (deleteMsgs) {
+              setMsgs([]);
+            }
+          }} />
+        </Dialog>
+
+        <Dialog
+          open={showDialogDeleteConversation}
+          onClose={() => setShowDialogDeleteConversation(false)}
+        >
+          <DeleteConversation name={name} callback={res => setShowDialogDeleteConversation(res)} />
         </Dialog>
       </>
     );
