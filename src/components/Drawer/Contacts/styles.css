@@ -1,0 +1,139 @@
+div#drawer-contact {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+div#drawer-contact {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #131c21;
+}
+
+div#drawer-contact .header-contact {
+  height: 70px;
+  background-color: #323739;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: #ddd;
+}
+
+div#drawer-contact div.input-container {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  border-bottom: 1px solid #323739;
+}
+
+div#drawer-contact div.input-container .icon-search {
+ position: absolute;
+ outline: none;
+ margin-right: 350px;
+ cursor: pointer;
+ transition: ease 0.2s;
+ color: #ddd;
+}
+
+div#drawer-contact div.input-container .icon-search-right {
+ position: absolute;
+ outline: none;
+ margin-left: 350px;
+ cursor: pointer;
+ transition: ease 0.2s;
+ color: #ddd;
+}
+
+div#drawer-contact div.input-container input {
+  height: 35px;
+  width: 70%;
+  padding-left: 65px;
+  padding-right: 32px;
+  border-radius: 15px;
+  border: none;
+  background-color: #323739;
+  color: #ddd;
+
+}
+
+div#drawer-contact div.input-container input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+div#drawer-contact .new-group {
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #ddd;
+  padding: 10px;
+  cursor: pointer;
+  transition: ease 0.2s;
+  border-bottom: 1px solid #323739;
+}
+
+div#drawer-contact .new-group:hover {
+  background-color: #323739
+ }
+
+div#drawer-contact .new-group .btn-new-group {
+  height: 50px;
+  width: 50px;
+  background-color: #009688 ;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+div#drawer-contact > span {
+  height: 30px;
+  color: #009688;
+  padding: 30px 30px 20px;
+  text-transform: uppercase;
+  font-size: 16px;
+  border-bottom: 1px solid #323739;
+}
+
+div#drawer-contact .contact-container {
+  height: 60px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  align-items: center;
+  transition: ease 0.2s;
+  border-bottom: 1px solid #323739;
+}
+div#drawer-contact .contact-container:hover { 
+  background-color: #323739;
+}
+
+div#drawer-contact .contact-container .info-contact {
+  display: flex;
+  flex-direction: column;
+  line-height: 22px;
+}
+div#drawer-contact .contact-container .info-contact .contact-name{
+  color: #f1f1f2eb;
+  font-size: 17px;
+}
+div#drawer-contact .contact-container .info-contact span {
+  font-size: 14px;
+  color: #f1f1f2a1
+}
+div#drawer-contact .contact-container img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  padding-right: 10px;
+}

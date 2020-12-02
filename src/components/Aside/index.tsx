@@ -6,6 +6,7 @@ import { RiDonutChartLine } from 'react-icons/ri';
 import Message from '../Message';
 import Drawer from '../Drawer';
 import Profile from '../Drawer/Profile';
+import Contacts from '../Drawer/Contacts';
 
 import './styles.css';
 
@@ -31,6 +32,8 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
   const [text, setText] = useState('');
   const [focused, setFocused] = useState(false);
   const [showDrawer, SetShowDrawer] = useState(false);
+  const [showDrawerProfile, SetShowDrawerProfile] = useState(false);
+  const [showDrawerContact, SetShowDrawerContact] = useState(false);
 
   function filterContacts() {
     if (text == '') {
@@ -46,15 +49,25 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     filterContacts();
   }
 
+  function handleShowDrawerContact() {
+    SetShowDrawerContact(true);
+    SetShowDrawer(true);
+  }
+
+  function handleShowDrawerProfile() {
+    SetShowDrawerProfile(true);
+    SetShowDrawer(true);
+  }
+
   return (
     <>
       <aside>
         <div className="profile-container">
-          <img onClick={() => SetShowDrawer(true)} src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
+          <img onClick={handleShowDrawerProfile} src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
 
           <div className="icons-container">
             <RiDonutChartLine className="icon" size={24} />
-            <BiCommentDetail className="icon" size={24} />
+            <BiCommentDetail onClick={handleShowDrawerContact} className="icon" size={24} />
             <FiMoreVertical className="icon" size={24} />
           </div>
         </div>
@@ -83,7 +96,20 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         show={showDrawer}
         callback={res => SetShowDrawer(res)}
       >
-        <Profile callback={res => SetShowDrawer(res)} />
+        {showDrawerProfile && (
+          <Profile callback={res => {
+            SetShowDrawer(res);
+            SetShowDrawerProfile(res);
+          }} />
+        )}
+        {showDrawerContact && (
+          <Contacts contacts={contacts}
+            contactSelected={contactSelected => callback(contactSelected)}
+            callback={res => {
+              SetShowDrawer(res);
+              SetShowDrawerContact(res);
+            }} />
+        )}
       </Drawer>
     </>
   );
