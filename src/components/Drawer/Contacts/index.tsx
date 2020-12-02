@@ -43,7 +43,7 @@ const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected
   }
 
   return (
-    <div id="drawer-contact">
+    <aside id="drawer-contact">
       <div className="header-contact">
         <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
         <strong style={{ marginLeft: '30px' }}>Nova conversa</strong>
@@ -70,16 +70,18 @@ const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected
 
       <span>Contatos Frequentes</span>
 
-      {filterContacts().map(c => (
-        <div key={c.id} className="contact-container" onClick={() => contactSelected(c)}>
-          <img src={c.picture} alt={c.name} />
-          <div className="info-contact">
-            <span className="contact-name">{c.name}</span>
-            <span>{c.message}</span>
+      <div className="contact-container">
+        {filterContacts().map(c => (
+          <div key={c.id} className="contact" onClick={() => contactSelected(c)}>
+            <img src={c.picture} alt={c.name} />
+            <div className="info-contact">
+              <span className="contact-name">{c.name}</span>
+              <span>{c.message}</span>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </aside>
   );
 }
 

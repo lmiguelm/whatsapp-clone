@@ -84,14 +84,8 @@ hr {
 }
 
 aside div.conversation{ 
-  height: 850px;
+  height: 100vh;
   overflow: auto;
 }
 
-@media(max-width: 1366px) {
-  aside div.conversation{ 
-    height: 590px;
-    overflow: auto;
-  }
-}
 

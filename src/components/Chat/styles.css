@@ -56,19 +56,13 @@
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 835px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   padding: 10px;
   overflow: scroll;
-}
-
-@media(max-width: 1366px) {
-  #chat .content-container{ 
-    height: 570px;
-  }
 }
 
 #chat .content-container .balon {
