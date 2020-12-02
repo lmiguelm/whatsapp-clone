@@ -42,3 +42,13 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #394045;
 }
+
+.MuiMenu-paper	{
+  height: auto;
+  
+}
+
+.MuiMenu-list {
+  background-color: #2a2f32;
+  color: #ddd;
+}

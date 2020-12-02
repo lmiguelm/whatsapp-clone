@@ -20,15 +20,59 @@ div#drawer-profile .header-profile {
   color: #ddd;
 }
 
+div#drawer-profile .img-container {
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  transition: ease .2s;
+  cursor: pointer;
+}
+
 div#drawer-profile img{
   margin-top: 20px;
   margin-bottom: 20px;
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  align-self: center;
-  cursor: pointer;
+  z-index: 1;
 }
+
+div#drawer-profile img:hover{ 
+  z-index: 0;
+}
+
+
+div#drawer-profile .overlap {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: absolute;
+  outline: none;
+  z-index: 0;
+  color: #ddd;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+div#drawer-profile .overlap:hover {
+ z-index: 1;
+ background: #131c21;
+ opacity: 0.8;
+}
+
+div#drawer-profile .overlap span {
+  max-width: 110px;
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
 
 div#drawer-profile .name-container{
   font-weight: 700;
