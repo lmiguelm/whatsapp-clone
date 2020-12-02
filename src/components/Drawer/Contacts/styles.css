@@ -4,6 +4,7 @@ aside#drawer-contact {
   flex-direction: row;
 }
 
+
 aside#drawer-contact {
   display: flex;
   flex-direction: column;
@@ -69,6 +70,11 @@ aside#drawer-contact div.input-container input:focus{
   outline: 0;
 }
 
+aside#drawer-contact div.scroll {
+  height: 100vh;
+  overflow: scroll;
+} 
+
 aside#drawer-contact .new-group {
   height: 80px;
   display: flex;
@@ -96,21 +102,18 @@ aside#drawer-contact .new-group:hover {
   align-items: center;
 } 
 
-aside#drawer-contact > span {
-  height: 30px;
+aside#drawer-contact .scroll .frequentes {
+  height: 20px;
   color: #009688;
   padding: 30px 30px 20px;
   text-transform: uppercase;
   font-size: 16px;
   border-bottom: 1px solid #323739;
+  display: flex;
+  align-items: center;
 }
 
-aside#drawer-contact .contact-container{
-  height: 100vh;
-  overflow: scroll;
-}
-
-aside#drawer-contact .contact-container .contact {
+aside#drawer-contact .contact {
   height: 60px;
   display: flex;
   cursor: pointer;
@@ -119,24 +122,24 @@ aside#drawer-contact .contact-container .contact {
   transition: ease 0.2s;
   border-bottom: 1px solid #323739;
 }
-aside#drawer-contact .contact-container .contact:hover { 
+aside#drawer-contact .contact:hover { 
   background-color: #323739;
 }
 
-aside#drawer-contact .contact-container .contact .info-contact {
+aside#drawer-contact .contact .info-contact {
   display: flex;
   flex-direction: column;
   line-height: 22px;
 }
-aside#drawer-contact .contact-container .contact .info-contact .contact-name{
+aside#drawer-contact .contact .info-contact .contact-name{
   color: #f1f1f2eb;
   font-size: 17px;
 }
-aside#drawer-contact .contact-container .contact .info-contact span {
+aside#drawer-contact .contact .info-contact span {
   font-size: 14px;
   color: #f1f1f2a1
 }
-aside#drawer-contact .contact-container .contact img {
+aside#drawer-contact .contact img {
   height: 60px;
   width: 60px;
   border-radius: 50%;

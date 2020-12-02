@@ -61,16 +61,18 @@ const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected
           )}
       </div>
 
-      <div className="new-group">
-        <div className="btn-new-group">
-          <RiUserAddLine size={24} />
+      <div className="scroll">
+        <div className="new-group">
+          <div className="btn-new-group">
+            <RiUserAddLine size={24} />
+          </div>
+          <p style={{ marginLeft: '10px' }}>Novo grupo</p>
         </div>
-        <p style={{ marginLeft: '10px' }}>Novo grupo</p>
-      </div>
 
-      <span>Contatos Frequentes</span>
+        <div className="frequentes">
+          <span>Contatos Frequentes</span>
+        </div>
 
-      <div className="contact-container">
         {filterContacts().map(c => (
           <div key={c.id} className="contact" onClick={() => contactSelected(c)}>
             <img src={c.picture} alt={c.name} />
