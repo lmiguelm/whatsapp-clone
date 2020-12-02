@@ -8,10 +8,9 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right';
 interface DrawerProps {
   show: boolean;
   anchor: Anchor;
-  callback(show: boolean): void
 }
 
-const DrawerComponent: React.FC<DrawerProps> = ({ children, anchor, show, callback }) => {
+const DrawerComponent: React.FC<DrawerProps> = ({ children, anchor, show }) => {
 
   return (
     <Drawer

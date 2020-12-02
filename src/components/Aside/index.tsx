@@ -33,7 +33,6 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
 
   const [text, setText] = useState('');
   const [focused, setFocused] = useState(false);
-  const [showDrawer, SetShowDrawer] = useState(false);
   const [showDrawerProfile, SetShowDrawerProfile] = useState(false);
   const [showDrawerContact, SetShowDrawerContact] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -60,27 +59,17 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     filterContacts();
   }
 
-  function handleShowDrawerContact() {
-    SetShowDrawerContact(true);
-    SetShowDrawer(true);
-  }
-
-  function handleShowDrawerProfile() {
-    SetShowDrawerProfile(true);
-    SetShowDrawer(true);
-  }
-
   return (
     <>
       <aside>
         <div className="profile-container">
-          <img onClick={handleShowDrawerProfile} src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
+          <img onClick={() => SetShowDrawerProfile(true)} src="https://media.discordapp.net/attachments/604432337949950014/781967393114554388/6skneo8tlow51.png" alt="profile" />
 
           <div className="icons-container">
             <Badge overlap="circle" color="primary" variant="dot" invisible={false} style={{ paddingBottom: '3px' }} >
               <RiDonutChartLine className="icon" size={24} />
             </Badge>
-            <BiCommentDetail onClick={handleShowDrawerContact} className="icon" size={24} />
+            <BiCommentDetail onClick={() => SetShowDrawerContact(true)} className="icon" size={24} />
             <FiMoreVertical className="icon" size={24} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
           </div>
         </div>
@@ -106,23 +95,19 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
 
       <Drawer
         anchor="left"
-        show={showDrawer}
-        callback={res => SetShowDrawer(res)}
+        show={showDrawerProfile}
       >
-        {showDrawerProfile && (
-          <Profile callback={res => {
-            SetShowDrawer(res);
-            SetShowDrawerProfile(res);
-          }} />
-        )}
-        {showDrawerContact && (
-          <Contacts contacts={contacts}
-            contactSelected={contactSelected => callback(contactSelected)}
-            callback={res => {
-              SetShowDrawer(res);
-              SetShowDrawerContact(res);
-            }} />
-        )}
+        <Profile callback={res => SetShowDrawerProfile(res)} />
+      </Drawer>
+
+      <Drawer
+        anchor="left"
+        show={showDrawerContact}
+      >
+        <Contacts contacts={contacts}
+          contactSelected={contactSelected => callback(contactSelected)}
+          callback={res => SetShowDrawerContact(res)}
+        />
       </Drawer>
 
       <Menu

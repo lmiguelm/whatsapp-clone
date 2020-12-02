@@ -7,6 +7,7 @@ import Drawer from '../../components/Drawer';
 
 import './styles.css';
 import Logo from '../../assets/index.png';
+import SearchMessage from '../Drawer/SearchMessage';
 
 interface Contact {
   id: number;
@@ -31,6 +32,8 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
   const div = useRef<HTMLDivElement | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [showDrawerContactData, setShowDrawerContactData] = useState(false);
+  const [showDrawerSearchMessage, setShowDrawerSearchMessage] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -71,8 +74,8 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
     return (
       <>
         <div id="chat">
-          <div className="header-container" onClick={() => setShowDrawerContactData(true)}>
-            <div className="header-people">
+          <div className="header-container" >
+            <div className="header-people" onClick={() => setShowDrawerContactData(true)}>
               <img src={picture} alt="profile" />
               <div className="info">
                 <strong>{name}</strong>
@@ -80,7 +83,7 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
               </div>
             </div>
             <div className="header-option">
-              <FiSearch className="icon" size={24} />
+              <FiSearch className="icon" size={24} onClick={() => setShowDrawerSearchMessage(true)} />
               <FiMoreVertical className="icon" size={24} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
             </div>
           </div>
@@ -131,11 +134,21 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
         </Menu>
 
         <Drawer
-          callback={res => setShowDrawerContactData(res)}
           anchor="right"
           show={showDrawerContactData}
         >
-          <ContactData contact={{ id, status, message, name, number, picture, time }} callback={res => setShowDrawerContactData(res)} />
+          <ContactData
+            contact={{ id, status, message, name, number, picture, time }}
+            callback={res => setShowDrawerContactData(res)}
+          />
+        </Drawer>
+
+
+        <Drawer
+          anchor="right"
+          show={showDrawerSearchMessage}
+        >
+          <SearchMessage contact={{ id, status, message, name, number, picture, time }} callback={res => setShowDrawerSearchMessage(res)} />
         </Drawer>
       </>
     );

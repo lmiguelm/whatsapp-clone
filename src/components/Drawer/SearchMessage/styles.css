@@ -1,0 +1,69 @@
+div#search-msg {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #131c21;
+}
+
+div#search-msg .header { 
+  height: 30px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: #2a2f32;
+  color: #ddd;
+}
+
+div#search-msg .input-container {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  border-bottom: 1px solid #323739;
+
+  color: #ddd;
+}
+div#search-msg .input-container .icon-search {
+  position: absolute;
+  outline: none;
+  margin-right: 350px;
+  cursor: pointer;
+  transition: ease 0.2s;
+}
+div#search-msg .input-container .icon-search-right {
+  position: absolute;
+  outline: none;
+  margin-left: 350px;
+  cursor: pointer;
+  transition: ease 0.2s;
+}
+
+div#search-msg .input-container input {
+  height: 35px;
+  width: 70%;
+  padding-left: 65px;
+  padding-right: 32px;
+  border-radius: 15px;
+  border: none;
+  background-color: #323739;
+  color: #ddd;
+}
+div#search-msg .input-container input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+div#search-msg > span {
+  margin-top: 50px;
+  text-align: center;
+  color: #828689;
+  font-size: 14px;
+}
