@@ -136,7 +136,10 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         anchor="left"
         show={showDrawerConfig}
       >
-        <Config user={user} callback={res => setShowDrawerConfig(res)} />
+        <Config user={user} callback={(close, showProfile) => {
+          setShowDrawerConfig(close);
+          setShowDrawerProfile(showProfile);
+        }} />
       </Drawer>
 
       <Menu

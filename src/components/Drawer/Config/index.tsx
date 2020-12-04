@@ -13,7 +13,7 @@ interface User {
 }
 
 interface ConfigProps {
-  callback(show: boolean): void;
+  callback(show: boolean, showProfile: boolean): void;
   user: User;
 }
 
@@ -21,11 +21,11 @@ const Config: React.FC<ConfigProps> = ({ callback, user }) => {
   return (
     <div id="drawer-config">
       <div className="header">
-        <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
+        <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false, false)} />
         <strong style={{ marginLeft: '30px' }}>Configurações</strong>
       </div>
 
-      <div className="data-container">
+      <div className="data-container" onClick={() => callback(false, true)}>
         <img src={user.picture} alt={user.name} />
         <div className="text-container">
           <p>{user.name}</p>

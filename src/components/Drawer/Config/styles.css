@@ -22,6 +22,10 @@ div#drawer-config .data-container {
   display: flex;
   align-items: center;
   padding: 20px;
+  cursor: pointer;
+}
+div#drawer-config .data-container:hover { 
+  background-color: #292c2e;
 }
 div#drawer-config .data-container img {
   height: 82px;
@@ -58,7 +62,7 @@ div#drawer-config .config-container .item {
   padding: 20px;
 }
 div#drawer-config .config-container .item:hover {
-  background-color: #323739;
+  background-color:  #292c2e;
 }
 
 div#drawer-config .config-container .item .icon {
@@ -68,7 +72,7 @@ div#drawer-config .config-container .item .icon {
 div#drawer-config .config-container .item .text {
   height: 20px; 
   width: 80%;
-  border-bottom: 1px solid #323739;
+  border-bottom: 1px solid  #292c2e;
   margin-left: 30px;
   padding-bottom: 20px;
 }
