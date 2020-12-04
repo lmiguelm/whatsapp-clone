@@ -1,0 +1,75 @@
+div#drawer-config {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #131c21;
+}
+
+div#drawer-config .header {
+  height: 70px;
+  background-color: #323739;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: #ddd;
+}
+
+div#drawer-config .data-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+div#drawer-config .data-container img {
+  height: 82px;
+  width: 82px;
+  border-radius: 50%;
+}
+div#drawer-config .data-container .text-container {
+  height: 50px;
+  margin-left: 20px;
+}
+div#drawer-config .data-container .text-container p {
+  color: #dfe0e2;
+  font-size: 19px;
+}
+
+div#drawer-config .data-container .text-container span {
+  color: #989b9e;
+  font-size: 15px;
+}
+
+div#drawer-config .config-container {
+  flex: 1;
+  color: #989b9e;
+  display: flex;
+  flex-direction: column;
+}
+div#drawer-config .config-container .item {
+  height: 30px;
+  display: flex;
+  color: #cacbcd;
+  cursor: pointer;
+  transition: ease .2s;
+  align-items: center;
+  padding: 20px;
+}
+div#drawer-config .config-container .item:hover {
+  background-color: #323739;
+}
+
+div#drawer-config .config-container .item .icon {
+  padding-bottom: 20px;
+}
+
+div#drawer-config .config-container .item .text {
+  height: 20px; 
+  width: 80%;
+  border-bottom: 1px solid #323739;
+  margin-left: 30px;
+  padding-bottom: 20px;
+}
+

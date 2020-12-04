@@ -14,6 +14,7 @@ import Status from '../Dialog/Status';
 import axios from 'axios';
 
 import './styles.css';
+import Config from '../Drawer/Config';
 
 
 interface Contact {
@@ -38,6 +39,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
   const [focused, setFocused] = useState(false);
   const [showDrawerProfile, setShowDrawerProfile] = useState(false);
   const [showDrawerContact, setShowDrawerContact] = useState(false);
+  const [showDrawerConfig, setShowDrawerConfig] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [showStatus, setStatus] = useState(false);
   const [user, setUser] = useState<Contact>({
@@ -117,7 +119,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         anchor="left"
         show={showDrawerProfile}
       >
-        <Profile callback={res => setShowDrawerProfile(res)} />
+        <Profile user={user} callback={res => setShowDrawerProfile(res)} />
       </Drawer>
 
       <Drawer
@@ -128,6 +130,13 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
           contactSelected={contactSelected => callback(contactSelected)}
           callback={res => setShowDrawerContact(res)}
         />
+      </Drawer>
+
+      <Drawer
+        anchor="left"
+        show={showDrawerConfig}
+      >
+        <Config user={user} callback={res => setShowDrawerConfig(res)} />
       </Drawer>
 
       <Menu
@@ -143,7 +152,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         <MenuItem onClick={() => setShowDrawerProfile(true)}>Perfil</MenuItem>
         <MenuItem onClick={handleClose}>Arquivadas</MenuItem>
         <MenuItem onClick={handleClose}>Favoritas</MenuItem>
-        <MenuItem onClick={handleClose}>Configurações</MenuItem>
+        <MenuItem onClick={() => setShowDrawerConfig(true)}>Configurações</MenuItem>
         <MenuItem onClick={handleClose}>Desconectar</MenuItem>
       </Menu>
 

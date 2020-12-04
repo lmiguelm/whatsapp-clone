@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { FiArrowLeft, FiCamera } from 'react-icons/fi';
 import { BsPencil } from 'react-icons/bs';
@@ -8,10 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import './styles.css';
 
-interface ProfileProps {
-  callback(show: boolean): void;
-}
-
 interface User {
   id: number;
   name: string;
@@ -19,10 +15,13 @@ interface User {
   message: string;
   number: string;
 }
+interface ProfileProps {
+  callback(show: boolean): void;
+  user: User;
+}
 
-const Profile: React.FC<ProfileProps> = ({ callback }) => {
+const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
 
-  const [user, setUser] = useState<User>({ id: 0, name: '', picture: '', message: '', number: '' });
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -32,15 +31,6 @@ const Profile: React.FC<ProfileProps> = ({ callback }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  async function loadUser() {
-    const res = await axios.get('http://localhost:8080/user');
-    setUser(res.data);
-  }
 
   return (
     <>
