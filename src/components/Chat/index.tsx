@@ -14,6 +14,8 @@ import SilenceNotification from '../Dialog/SilenceNotifications';
 import DeleteMessages from '../Dialog/DeleteMessages';
 import DeleteConversation from '../Dialog/DeleteConversation';
 
+import { useTheme } from '../../contexts/theme';
+
 interface Contact {
   id: number;
   name: string;
@@ -41,6 +43,8 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
   const [showDialogSilence, setShowDialogSilence] = useState(false);
   const [showDialogDelete, setShowDialogDelete] = useState(false);
   const [showDialogDeleteConversation, setShowDialogDeleteConversation] = useState(false);
+
+  const { wallpaper } = useTheme();
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -95,7 +99,7 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
             </div>
           </div>
 
-          <div className="content-container" ref={div}>
+          <div className="content-container" ref={div} style={{ backgroundColor: wallpaper }}>
             {msgs.map((msg, key) => (
               <div key={key} className="balon" onMouseEnter={() => setInfo(true)} onMouseOut={() => setInfo(false)}>
                 <p>{msg}</p>

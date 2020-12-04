@@ -1,0 +1,10 @@
+div#color {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  transition: ease .2s;
+}
+div#color:hover {
+  height: 110px;
+  width: 110px;
+}

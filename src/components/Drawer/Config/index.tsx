@@ -4,6 +4,7 @@ import { IoNotificationsSharp, IoHelpCircle, IoContrastOutline, IoBan, IoImageSh
 
 import Drawer from '../../Drawer';
 import Notification from '../Notification';
+import Wallpaper from '../Wallpaper';
 
 import './styles.css';
 
@@ -23,6 +24,7 @@ interface ConfigProps {
 const Config: React.FC<ConfigProps> = ({ callback, user }) => {
 
   const [showDrawerNotification, setShowDrawerNotification] = useState(false);
+  const [showDrawerWallpaper, setShowDrawerWallpaper] = useState(false);
 
   return (
     <>
@@ -55,7 +57,7 @@ const Config: React.FC<ConfigProps> = ({ callback, user }) => {
             </div>
           </div>
 
-          <div className="item">
+          <div className="item" onClick={() => setShowDrawerWallpaper(true)}>
             <IoImageSharp size={24} className="icon" />
             <div className="text">
               <span>Papel de parede da conversa</span>
@@ -83,6 +85,13 @@ const Config: React.FC<ConfigProps> = ({ callback, user }) => {
         show={showDrawerNotification}
       >
         <Notification callback={res => setShowDrawerNotification(res)} />
+      </Drawer>
+
+      <Drawer
+        anchor="left"
+        show={showDrawerWallpaper}
+      >
+        <Wallpaper callback={res => setShowDrawerWallpaper(res)} />
       </Drawer>
     </>
   );

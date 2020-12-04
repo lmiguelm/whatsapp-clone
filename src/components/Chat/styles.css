@@ -52,7 +52,7 @@
 }
 
 #chat .content-container {
-  background-image: url(../../assets/background.jpg);
+  background: #111;
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: no-repeat;

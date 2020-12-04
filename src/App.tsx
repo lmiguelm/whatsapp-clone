@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from './contexts/theme';
 import axios from 'axios';
 
 import './global.css';
@@ -41,12 +42,14 @@ function App() {
   }
 
   return (
-    <div id="page">
-      <div className="page-container">
-        <Aside contacts={contacts} callback={res => setContactSelected(res)} />
-        <Chat contactSelected={contactSelected} />
+    <ThemeProvider>
+      <div id="page">
+        <div className="page-container">
+          <Aside contacts={contacts} callback={res => setContactSelected(res)} />
+          <Chat contactSelected={contactSelected} />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
