@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { black, white } from '../util/theme';
 
@@ -32,6 +32,14 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const [blackTheme, setBlackTheme] = useState(false);
   const [wallpaper, setWallpaper] = useState(blackTheme ? '#222' : '#dfd7d0');
 
+
+  useEffect(() => {
+    if (blackTheme) {
+      setWallpaper('#111');
+    } else {
+      setWallpaper('#dfd7d0');
+    }
+  }, [blackTheme])
 
   function changeWallpaper(color: string) {
     setWallpaper(color);
