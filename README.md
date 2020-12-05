@@ -11,19 +11,19 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Material-UI](https://material-ui.com/pt)
 
 ## 💻 Como usar
-- ***Clone o projeto:***
+- ***Clone o projeto:*** <br>
 ``` git clone https://github.com/lmiguelm/whatsapp-clone.git```
 
-- ***Entre na pasta do projeto:*** 
+- ***Entre na pasta do projeto:*** <br>
  ```cd whatsapp-clone```
  
-- ***Baixe as dependências:***
+- ***Baixe as dependências:*** <br>
 ``` yarn || npm install```
 
-- ***Rodar o site:*** 
+- ***Rodar o site:*** <br>
 ```yarn start || npm start```
 
-- ***Rodar o json-server:*** 
+- ***Rodar o json-server:*** <br>
 ```yarn server || npm server```
 
 ## 📝 Licença
