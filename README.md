@@ -1,6 +1,6 @@
 # WhatsApp WEB Clone
 
-![Whastapp](./.github/application.git)
+![Whastapp](.github/application.git)
 
 ## 🚀   Tecnologias:
 Esse projeto foi desenvolvido com as seguintes tecnologias:
