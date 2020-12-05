@@ -4,8 +4,7 @@ import { RiUserAddLine } from 'react-icons/ri';
 
 import './styles.css';
 
-import Message from '../../Message';
-
+import { useTheme } from '../../../contexts/theme';
 interface Contact {
   id: number;
   name: string;
@@ -26,7 +25,8 @@ interface ContactsProps {
 const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected }) => {
 
   const [text, setText] = useState('');
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState(true);
+  const { theme } = useTheme();
 
   function backSearch() {
     setText('');
@@ -43,17 +43,23 @@ const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected
   }
 
   return (
-    <aside id="drawer-contact">
-      <div className="header-contact">
+    <aside id="drawer-contact" style={{ backgroundColor: theme.backgroundAside }}>
+      <div className="header-contact" style={{ backgroundColor: theme.backgroundTertiary }}>
         <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
         <strong style={{ marginLeft: '30px' }}>Nova conversa</strong>
       </div>
 
-      <div className="input-container">
-        <input onFocus={() => setFocused(true)} type="text" value={text} onChange={e => setText(e.target.value)} placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''} />
+      <div className="input-container" style={{ backgroundColor: theme.backgroundDrawer, borderBottom: `1px solid ${theme.border}` }}>
+        <input
+          onFocus={() => setFocused(true)}
+          type="text" value={text}
+          onChange={e => setText(e.target.value)}
+          placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''}
+          style={{ backgroundColor: theme.backgroundInput, color: theme.colorPrimary }}
+        />
         {focused ? (
           <>
-            <FiArrowLeft className="icon-search" onClick={backSearch} size={20} />
+            <FiArrowLeft style={{ color: theme.colorSecondary }} className="icon-search" onClick={backSearch} size={20} />
             <FiX className="icon-search-right" onClick={backSearch} size={20} />
           </>
         ) : (
@@ -62,28 +68,28 @@ const Contacts: React.FC<ContactsProps> = ({ callback, contacts, contactSelected
       </div>
 
       <div className="scroll">
-        <div className="new-group">
-          <div className="btn-new-group">
+        <div className="new-group" style={{ borderBottom: `1px solid ${theme.border}` }}>
+          <div className="btn-new-group" >
             <RiUserAddLine size={24} />
           </div>
-          <p style={{ marginLeft: '10px' }}>Novo grupo</p>
+          <p style={{ color: theme.colorPrimary, marginLeft: '10px' }}>Novo grupo</p>
         </div>
 
-        <div className="frequentes">
-          <span>Contatos Frequentes</span>
+        <div className="frequentes" style={{ borderBottom: `1px solid ${theme.border}` }}>
+          <span style={{ color: theme.colorTertiary }}>Contatos Frequentes</span>
         </div>
 
         {filterContacts().map(c => (
-          <div key={c.id} className="contact" onClick={() => contactSelected(c)}>
+          <div key={c.id} className="contact" onClick={() => contactSelected(c)} style={{ borderBottom: `1px solid ${theme.border}` }}>
             <img src={c.picture} alt={c.name} />
             <div className="info-contact">
-              <span className="contact-name">{c.name}</span>
-              <span>{c.message}</span>
+              <span className="contact-name" style={{ color: theme.colorPrimary }}>{c.name}</span>
+              <span style={{ color: theme.colorSecondary }}>{c.message}</span>
             </div>
           </div>
         ))}
       </div>
-    </aside>
+    </aside >
   );
 }
 

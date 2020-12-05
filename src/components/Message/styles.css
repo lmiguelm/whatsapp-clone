@@ -3,7 +3,7 @@ div.message-container {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #323739;
+  border-bottom: 1px solid #ddd;
   height: 60px;
   
   cursor: pointer;
@@ -12,7 +12,7 @@ div.message-container {
 }
 
 div.message-container:hover {
-  background-color: #323739;
+  background-color: #8c9092;
 }
 
 div.message-container > span{

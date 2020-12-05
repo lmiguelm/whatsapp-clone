@@ -5,6 +5,8 @@ import { RiDonutChartLine } from 'react-icons/ri';
 
 import { Menu, MenuItem, Dialog } from '@material-ui/core';
 
+import { useTheme } from '../../contexts/theme';
+
 import Message from '../Message';
 import Drawer from '../Drawer';
 import Profile from '../Drawer/Profile';
@@ -13,8 +15,10 @@ import Status from '../Dialog/Status';
 
 import axios from 'axios';
 
+
 import './styles.css';
 import Config from '../Drawer/Config';
+
 
 
 interface Contact {
@@ -42,6 +46,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
   const [showDrawerConfig, setShowDrawerConfig] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [showStatus, setStatus] = useState(false);
+  const { theme, blackTheme } = useTheme();
   const [user, setUser] = useState<Contact>({
     name: '',
     id: 0,
@@ -51,6 +56,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     status: '',
     time: ''
   });
+
 
   useEffect(() => {
     loadUser();
@@ -83,10 +89,18 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     filterContacts();
   }
 
+  useEffect(() => {
+    if (blackTheme) {
+      document.body.style.backgroundColor = '#090e11';
+    } else {
+      document.body.style.backgroundColor = '#e1e2e3';
+    }
+  }, [blackTheme])
+
   return (
     <>
       <aside>
-        <div className="profile-container">
+        <div className="profile-container" style={{ backgroundColor: theme.backgroundSecondary }}>
           <img onClick={() => setShowDrawerProfile(true)} src={user.picture} alt="profile" />
 
           <div className="icons-container">
@@ -96,8 +110,15 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
           </div>
         </div>
 
-        <div className="input-container">
-          <input onFocus={() => setFocused(true)} type="text" value={text} onChange={e => setText(e.target.value)} placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''} />
+        <div className="input-container" style={{ backgroundColor: theme.backgroundSecondary, borderBottom: `1px solid ${theme.border}` }} >
+          <input
+            style={{ backgroundColor: theme.backgroundInput, color: theme.colorPrimary }}
+            onFocus={() => setFocused(true)}
+            type="text"
+            value={text}
+            onChange={e => setText(e.target.value)}
+            placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''}
+          />
           {focused ? (
             <>
               <FiArrowLeft className="icon-search" onClick={backSearch} size={20} />
@@ -108,7 +129,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
             )}
         </div>
 
-        <div className="conversation">
+        <div className="conversation" style={{ backgroundColor: theme.backgroundAside, borderBottom: `1px solid ${theme.border}` }}>
           {filterContacts().map(contact => (
             <Message key={contact.id} contact={contact} callback={contactSelected => callback(contactSelected)} />
           ))}

@@ -22,7 +22,7 @@ aside#drawer-contact .header-contact {
 }
 
 aside#drawer-contact div.input-container {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   padding-bottom: 5px;
   height: 70px;
   display: flex;
@@ -88,7 +88,7 @@ aside#drawer-contact .new-group {
 }
 
 aside#drawer-contact .new-group:hover {
-  background-color: #323739
+  background-color: #8c9092
  }
 
  aside#drawer-contact .new-group .btn-new-group {
@@ -123,7 +123,8 @@ aside#drawer-contact .contact {
   border-bottom: 1px solid #323739;
 }
 aside#drawer-contact .contact:hover { 
-  background-color: #323739;
+  background-color: #8c9092;
+  color: black
 }
 
 aside#drawer-contact .contact .info-contact {

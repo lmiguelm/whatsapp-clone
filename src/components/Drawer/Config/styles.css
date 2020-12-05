@@ -25,7 +25,7 @@ div#drawer-config .data-container {
   cursor: pointer;
 }
 div#drawer-config .data-container:hover { 
-  background-color: #292c2e;
+  background-color: #8c9092;
 }
 div#drawer-config .data-container img {
   height: 82px;
@@ -62,7 +62,7 @@ div#drawer-config .config-container .item {
   padding: 20px;
 }
 div#drawer-config .config-container .item:hover {
-  background-color:  #292c2e;
+  background-color:  #8c9092;
 }
 
 div#drawer-config .config-container .item .icon {

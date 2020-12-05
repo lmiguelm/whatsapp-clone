@@ -8,7 +8,6 @@ import Drawer from '../../components/Drawer';
 
 
 import './styles.css';
-import Logo from '../../assets/index.png';
 import SearchMessage from '../Drawer/SearchMessage';
 import SilenceNotification from '../Dialog/SilenceNotifications';
 import DeleteMessages from '../Dialog/DeleteMessages';
@@ -16,6 +15,8 @@ import DeleteConversation from '../Dialog/DeleteConversation';
 
 import { useTheme } from '../../contexts/theme';
 
+import LogoBlack from '../../assets/index-black.png';
+import LogoWhite from '../../assets/index-white.png';
 interface Contact {
   id: number;
   name: string;
@@ -44,7 +45,7 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
   const [showDialogDelete, setShowDialogDelete] = useState(false);
   const [showDialogDeleteConversation, setShowDialogDeleteConversation] = useState(false);
 
-  const { wallpaper } = useTheme();
+  const { wallpaper, theme, blackTheme } = useTheme();
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -71,13 +72,13 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
 
   if (id === 999 && name === 'initial' && picture === 'initial' && message === 'initial') {
     return (
-      <div id="chat-none">
-        <img src={Logo} alt="Logo" />
+      <div id="chat-none" style={{ backgroundColor: theme.backgroundIndex }}>
+        <img src={blackTheme ? LogoBlack : LogoWhite} alt="Logo" />
 
         <div className="text-container">
-          <h2>Mantenha seu celular conectado</h2>
-          <p>O WhatsApp conect ao seu telefone para sincronizar suas mensagens.</p>
-          <p>Para reduzir o uso de dados, conecte seu telefone a uma rede Wi-Fi.</p>
+          <h2 style={{ color: theme.colorSecondary }} >Mantenha seu celular conectado</h2>
+          <p style={{ color: theme.colorSecondary }}>O WhatsApp conect ao seu telefone para sincronizar suas mensagens.</p>
+          <p style={{ color: theme.colorSecondary }}>Para reduzir o uso de dados, conecte seu telefone a uma rede Wi-Fi.</p>
         </div>
       </div>
     );
@@ -85,12 +86,12 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
     return (
       <>
         <div id="chat">
-          <div className="header-container" >
+          <div className="header-container" style={{ backgroundColor: theme.backgroundSecondary, borderLeft: `1px solid ${theme.border}` }} >
             <div className="header-people" onClick={() => setShowDrawerContactData(true)}>
               <img src={picture} alt="profile" />
               <div className="info">
-                <strong>{name}</strong>
-                <span>{status}</span>
+                <p style={{ color: theme.colorPrimary }}>{name}</p>
+                <span style={{ color: theme.colorSecondary }}>{status}</span>
               </div>
             </div>
             <div className="header-option">
@@ -115,16 +116,23 @@ const Chat: React.FC<ChatProps> = ({ contactSelected: { id, status, message, nam
             ))}
           </div>
 
-          <div className="footer-container">
+          <div className="footer-container" style={{ backgroundColor: theme.backgroundFotterChat, borderLeft: `1px solid ${theme.border}` }}>
             <div className="icons-media">
-              <IoHappyOutline size={30} />
-              <IoAttach size={30} />
+              <IoHappyOutline size={30} style={{ color: theme.colorSecondary }} />
+              <IoAttach size={30} style={{ color: theme.colorSecondary }} />
             </div>
-            <input onKeyPress={KeyPress} type="text" value={msg} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMsg(e.target.value)} placeholder="Digite um mensagem" />
+            <input
+              onKeyPress={KeyPress}
+              type="text"
+              value={msg}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMsg(e.target.value)}
+              placeholder="Digite um mensagem"
+              style={{ backgroundColor: theme.backgroundInput, color: theme.colorSecondary }}
+            />
             {msg == '' ? (
-              <IoMic size={30} className="mic" />
+              <IoMic size={30} className="mic" style={{ color: theme.colorSecondary }} />
             ) : (
-                <IoSend size={30} className="mic" onClick={handleSendMsg} />
+                <IoSend size={30} className="mic" onClick={handleSendMsg} style={{ color: theme.colorSecondary }} />
               )}
           </div>
         </div>

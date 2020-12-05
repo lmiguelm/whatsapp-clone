@@ -5,14 +5,20 @@ import Checkbox from '../../CheckBox';
 
 import './styles.css';
 
+
+import { useTheme } from '../../../contexts/theme';
+
 interface NotificationProps {
   callback(show: boolean): void;
 }
 
 const Notification: React.FC<NotificationProps> = ({ callback }) => {
+
+  const { theme } = useTheme();
+
   return (
-    <div id="drawer-notification">
-      <div className="header">
+    <div id="drawer-notification" style={{ backgroundColor: theme.backgroundDrawer }} >
+      <div className="header" style={{ backgroundColor: theme.backgroundTertiary }} >
         <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
         <strong style={{ marginLeft: '30px' }}>Notificações</strong>
       </div>

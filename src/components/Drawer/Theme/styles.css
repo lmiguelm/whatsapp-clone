@@ -1,0 +1,53 @@
+div #dialog-theme {
+  flex: 1;
+  background-color: #3b4042;
+  padding: 22px 24px 20px;
+  color: #ddd;
+}
+div #dialog-theme span {
+  font-size: 18px;
+}
+
+div #dialog-theme .radio-container {
+  height: 150px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+div #dialog-theme .radio-container .radio {
+  height: 30px;
+}
+div #dialog-theme .radio-container .radio label {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+div #dialog-theme .button-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div #dialog-theme .button-container .button {
+  height: 40px;
+  border: none;
+  padding: 10px 24px;
+  background-color: #00af9c;
+  color: #131c21;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+div #dialog-theme .button-container .button:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+div #dialog-theme .button-container .cancel{
+  margin-right: 30px;
+  background-color: transparent;
+  color: #00af9c;
+}

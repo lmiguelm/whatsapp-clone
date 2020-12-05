@@ -66,8 +66,6 @@ aside div.input-container input {
   border: none;
   background-color: #323739;
   color: #ddd;
-
-  
 }
 
 aside div.input-container input:focus{
@@ -87,5 +85,3 @@ aside div.conversation{
   height: 100vh;
   overflow: auto;
 }
-
-

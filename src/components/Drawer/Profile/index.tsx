@@ -5,6 +5,8 @@ import { BsPencil } from 'react-icons/bs';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import { useTheme } from '../../../contexts/theme';
+
 
 import './styles.css';
 
@@ -23,6 +25,7 @@ interface ProfileProps {
 const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { theme, blackTheme } = useTheme();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -34,8 +37,8 @@ const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
 
   return (
     <>
-      <div id="drawer-profile">
-        <div className="header-profile">
+      <div id="drawer-profile" style={{ backgroundColor: theme.backgroundDrawer }} >
+        <div className="header-profile" style={{ backgroundColor: theme.backgroundTertiary }}>
           <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
           <strong style={{ marginLeft: '30px' }}>Perfil</strong>
         </div>
@@ -48,23 +51,23 @@ const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
           </div>
         </div>
 
-        <div className="name-container">
-          <span>Nome</span>
+        <div className="name-container" style={{ backgroundColor: blackTheme ? '' : theme.backgroundAside, border: blackTheme ? '' : 'none' }}>
+          <span style={{ color: theme.colorTertiary }}>Nome</span>
           <div className="input-container">
-            <input type="text" value={user.name} disabled />
-            <BsPencil className="icon-edit" size={25} />
+            <input style={{ backgroundColor: blackTheme ? '' : theme.backgroundInput, color: theme.colorPrimary }} type="text" value={user.name} disabled />
+            <BsPencil style={{ color: theme.colorSecondary }} className="icon-edit" size={25} />
           </div>
         </div>
 
-        <div className="info">
-          <strong>Esse não é seu nome de usuário e nem seu PIN. Esse nome será visível para seus contatos do WhatsApp.</strong>
+        <div className="info" >
+          <strong style={{ color: theme.colorSecondary }} >Esse não é seu nome de usuário e nem seu PIN. Esse nome será visível para seus contatos do WhatsApp.</strong>
         </div>
 
-        <div className="name-container">
-          <span>Recado</span>
+        <div className="name-container" style={{ backgroundColor: blackTheme ? '' : theme.backgroundAside, border: blackTheme ? '' : 'none' }}>
+          <span style={{ color: theme.colorTertiary }}>Recado</span>
           <div className="input-container">
-            <input type="text" value={user.message} disabled />
-            <BsPencil className="icon-edit" size={25} />
+            <input style={{ backgroundColor: blackTheme ? '' : theme.backgroundInput, color: theme.colorPrimary }} type="text" value={user.message} disabled />
+            <BsPencil style={{ color: theme.colorSecondary }} className="icon-edit" size={25} />
           </div>
         </div>
       </div>

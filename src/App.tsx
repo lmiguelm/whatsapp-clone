@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeProvider } from './contexts/theme';
+import { ThemeProvider, useTheme } from './contexts/theme';
 import axios from 'axios';
 
-import './global.css';
+import './globalBlack.css';
+
+import './globalWhite.css';
+
 
 import Aside from './components/Aside';
 import Chat from './components/Chat';
@@ -31,6 +34,8 @@ function App() {
 
   const [contacts, setContacts] = useState([]);
   const [contactSelected, setContactSelected] = useState<Contact>(initialValue);
+
+  const { theme, blackTheme } = useTheme();
 
   useEffect(() => {
     loadContacts();

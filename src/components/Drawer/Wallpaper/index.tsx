@@ -13,9 +13,11 @@ interface WallpaperProps {
 
 const Wallpaper: React.FC<WallpaperProps> = ({ callback }) => {
 
+  const { theme } = useTheme();
+
   return (
-    <div id="drawer-wallpaper">
-      <div className="header">
+    <div id="drawer-wallpaper" style={{ backgroundColor: theme.backgroundDrawer }}>
+      <div className="header" style={{ backgroundColor: theme.backgroundTertiary }}>
         <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
         <strong style={{ marginLeft: '30px' }}>Definir papel de parede da conversa</strong>
       </div>
