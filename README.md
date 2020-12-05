@@ -1,6 +1,6 @@
 # WhatsApp WEB Clone
 
-![Alt Text](https://i.pinimg.com/originals/12/b2/3a/12b23a7752e8a7a4464c1ff5e596237f.gif)
+![whatsapp](.github/application.gif)
 
 ## 🚀   Tecnologias:
 Esse projeto foi desenvolvido com as seguintes tecnologias:
