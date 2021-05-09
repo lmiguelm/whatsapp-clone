@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "server": "json-server --watch server/db.json --port 8080",
-    "build": "json-server --watch server/db.json --port 8080 react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
