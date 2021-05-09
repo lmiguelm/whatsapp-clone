@@ -13,13 +13,9 @@ import Profile from '../Drawer/Profile';
 import Contacts from '../Drawer/Contacts';
 import Status from '../Dialog/Status';
 
-import axios from 'axios';
-
-
 import './styles.css';
 import Config from '../Drawer/Config';
-
-
+import { api } from '../../services/api';
 
 interface Contact {
   id: number;
@@ -36,9 +32,7 @@ interface AsideProps {
   callback(contact: Contact): void;
 }
 
-
 const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
-
   const [text, setText] = useState('');
   const [focused, setFocused] = useState(false);
   const [showDrawerProfile, setShowDrawerProfile] = useState(false);
@@ -54,16 +48,15 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     number: '',
     picture: '',
     status: '',
-    time: ''
+    time: '',
   });
-
 
   useEffect(() => {
     loadUser();
   }, []);
 
   async function loadUser() {
-    const res = await axios.get('http://localhost:8080/user');
+    const res = await api.get('/user');
     setUser(res.data);
   }
 
@@ -79,7 +72,9 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     if (text == '') {
       return contacts;
     } else {
-      return contacts.filter(c => c.name.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) >= 0).sort();
+      return contacts
+        .filter((c) => c.name.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) >= 0)
+        .sort();
     }
   }
 
@@ -95,7 +90,7 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
     } else {
       document.body.style.backgroundColor = '#e1e2e3';
     }
-  }, [blackTheme])
+  }, [blackTheme]);
 
   return (
     <>
@@ -105,18 +100,34 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
 
           <div className="icons-container">
             <RiDonutChartLine onClick={() => setStatus(true)} className="icon" size={24} />
-            <BiCommentDetail onClick={() => setShowDrawerContact(true)} className="icon" size={24} />
-            <FiMoreVertical className="icon" size={24} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
+            <BiCommentDetail
+              onClick={() => setShowDrawerContact(true)}
+              className="icon"
+              size={24}
+            />
+            <FiMoreVertical
+              className="icon"
+              size={24}
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            />
           </div>
         </div>
 
-        <div className="input-container" style={{ backgroundColor: theme.backgroundSecondary, borderBottom: `1px solid ${theme.border}` }} >
+        <div
+          className="input-container"
+          style={{
+            backgroundColor: theme.backgroundSecondary,
+            borderBottom: `1px solid ${theme.border}`,
+          }}
+        >
           <input
             style={{ backgroundColor: theme.backgroundInput, color: theme.colorPrimary }}
             onFocus={() => setFocused(true)}
             type="text"
             value={text}
-            onChange={e => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
             placeholder={!focused ? 'Procurar ou começar uma nova conversa' : ''}
           />
           {focused ? (
@@ -125,42 +136,47 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
               <FiX className="icon-search-right" onClick={backSearch} size={20} />
             </>
           ) : (
-              <FiSearch className="icon-search" size={20} />
-            )}
+            <FiSearch className="icon-search" size={20} />
+          )}
         </div>
 
-        <div className="conversation" style={{ backgroundColor: theme.backgroundAside, borderBottom: `1px solid ${theme.border}` }}>
-          {filterContacts().map(contact => (
-            <Message key={contact.id} contact={contact} callback={contactSelected => callback(contactSelected)} />
+        <div
+          className="conversation"
+          style={{
+            backgroundColor: theme.backgroundAside,
+            borderBottom: `1px solid ${theme.border}`,
+          }}
+        >
+          {filterContacts().map((contact) => (
+            <Message
+              key={contact.id}
+              contact={contact}
+              callback={(contactSelected) => callback(contactSelected)}
+            />
           ))}
         </div>
       </aside>
 
-      <Drawer
-        anchor="left"
-        show={showDrawerProfile}
-      >
-        <Profile user={user} callback={res => setShowDrawerProfile(res)} />
+      <Drawer anchor="left" show={showDrawerProfile}>
+        <Profile user={user} callback={(res) => setShowDrawerProfile(res)} />
       </Drawer>
 
-      <Drawer
-        anchor="left"
-        show={showDrawerContact}
-      >
-        <Contacts contacts={contacts}
-          contactSelected={contactSelected => callback(contactSelected)}
-          callback={res => setShowDrawerContact(res)}
+      <Drawer anchor="left" show={showDrawerContact}>
+        <Contacts
+          contacts={contacts}
+          contactSelected={(contactSelected) => callback(contactSelected)}
+          callback={(res) => setShowDrawerContact(res)}
         />
       </Drawer>
 
-      <Drawer
-        anchor="left"
-        show={showDrawerConfig}
-      >
-        <Config user={user} callback={(close, showProfile) => {
-          setShowDrawerConfig(close);
-          setShowDrawerProfile(showProfile);
-        }} />
+      <Drawer anchor="left" show={showDrawerConfig}>
+        <Config
+          user={user}
+          callback={(close, showProfile) => {
+            setShowDrawerConfig(close);
+            setShowDrawerProfile(showProfile);
+          }}
+        />
       </Drawer>
 
       <Menu
@@ -180,14 +196,10 @@ const Aside: React.FC<AsideProps> = ({ contacts, callback }) => {
         <MenuItem onClick={handleClose}>Desconectar</MenuItem>
       </Menu>
 
-      <Dialog
-        fullScreen
-        open={showStatus}
-        onClose={() => setStatus(false)}
-      >
-        <Status user={user} contacts={contacts} callback={res => setStatus(res)} />
+      <Dialog fullScreen open={showStatus} onClose={() => setStatus(false)}>
+        <Status user={user} contacts={contacts} callback={(res) => setStatus(res)} />
       </Dialog>
     </>
   );
-}
+};
 export default Aside;

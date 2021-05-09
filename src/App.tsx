@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './contexts/theme';
 import { CircularProgress, LinearProgress } from '@material-ui/core';
-import axios from 'axios';
 
 import './globalBlack.css';
 
 import './globalWhite.css';
 
-
 import Aside from './components/Aside';
 import Chat from './components/Chat';
+import { api } from './services/api';
 
 interface Contact {
   id: number;
@@ -29,10 +28,9 @@ const initialValue = {
   status: 'initial',
   message: 'initial',
   time: 'initial',
-}
+};
 
 function App() {
-
   const [contacts, setContacts] = useState([]);
   const [contactSelected, setContactSelected] = useState<Contact>(initialValue);
   const [loading, setLoading] = useState(true);
@@ -58,35 +56,35 @@ function App() {
   }, []);
 
   async function loadContacts() {
-    const res = await axios.get('http://localhost:8080/contacts');
+    const res = await api.get('/contacts');
     setContacts(res.data);
   }
 
   if (loading) {
     return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column'
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
         <CircularProgress style={{ color: '#394045' }} />
       </div>
-    )
+    );
   } else {
     return (
       <ThemeProvider>
         <div id="page">
           <div className="page-container">
-            <Aside contacts={contacts} callback={res => setContactSelected(res)} />
+            <Aside contacts={contacts} callback={(res) => setContactSelected(res)} />
             <Chat contactSelected={contactSelected} />
           </div>
         </div>
       </ThemeProvider>
     );
   }
-
-
 }
 
 export default App;

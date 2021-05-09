@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { FiArrowLeft, FiCamera } from 'react-icons/fi';
 import { BsPencil } from 'react-icons/bs';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import { useTheme } from '../../../contexts/theme';
-
 
 import './styles.css';
 
@@ -23,7 +21,6 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
-
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { theme, blackTheme } = useTheme();
 
@@ -37,7 +34,7 @@ const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
 
   return (
     <>
-      <div id="drawer-profile" style={{ backgroundColor: theme.backgroundDrawer }} >
+      <div id="drawer-profile" style={{ backgroundColor: theme.backgroundDrawer }}>
         <div className="header-profile" style={{ backgroundColor: theme.backgroundTertiary }}>
           <FiArrowLeft size={24} style={{ cursor: 'pointer' }} onClick={() => callback(false)} />
           <strong style={{ marginLeft: '30px' }}>Perfil</strong>
@@ -45,28 +42,64 @@ const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
 
         <div className="img-container">
           <img src={user.picture} />
-          <div className="overlap" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
+          <div
+            className="overlap"
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
             <FiCamera size={24} />
             <span>MUDAR FOTO DE PERFIL</span>
           </div>
         </div>
 
-        <div className="name-container" style={{ backgroundColor: blackTheme ? '' : theme.backgroundAside, border: blackTheme ? '' : 'none' }}>
+        <div
+          className="name-container"
+          style={{
+            backgroundColor: blackTheme ? '' : theme.backgroundAside,
+            border: blackTheme ? '' : 'none',
+          }}
+        >
           <span style={{ color: theme.colorTertiary }}>Nome</span>
           <div className="input-container">
-            <input style={{ backgroundColor: blackTheme ? '' : theme.backgroundInput, color: theme.colorPrimary }} type="text" value={user.name} disabled />
+            <input
+              style={{
+                backgroundColor: blackTheme ? '' : theme.backgroundInput,
+                color: theme.colorPrimary,
+              }}
+              type="text"
+              value={user.name}
+              disabled
+            />
             <BsPencil style={{ color: theme.colorSecondary }} className="icon-edit" size={25} />
           </div>
         </div>
 
-        <div className="info" >
-          <strong style={{ color: theme.colorSecondary }} >Esse não é seu nome de usuário e nem seu PIN. Esse nome será visível para seus contatos do WhatsApp.</strong>
+        <div className="info">
+          <strong style={{ color: theme.colorSecondary }}>
+            Esse não é seu nome de usuário e nem seu PIN. Esse nome será visível para seus contatos
+            do WhatsApp.
+          </strong>
         </div>
 
-        <div className="name-container" style={{ backgroundColor: blackTheme ? '' : theme.backgroundAside, border: blackTheme ? '' : 'none' }}>
+        <div
+          className="name-container"
+          style={{
+            backgroundColor: blackTheme ? '' : theme.backgroundAside,
+            border: blackTheme ? '' : 'none',
+          }}
+        >
           <span style={{ color: theme.colorTertiary }}>Recado</span>
           <div className="input-container">
-            <input style={{ backgroundColor: blackTheme ? '' : theme.backgroundInput, color: theme.colorPrimary }} type="text" value={user.message} disabled />
+            <input
+              style={{
+                backgroundColor: blackTheme ? '' : theme.backgroundInput,
+                color: theme.colorPrimary,
+              }}
+              type="text"
+              value={user.message}
+              disabled
+            />
             <BsPencil style={{ color: theme.colorSecondary }} className="icon-edit" size={25} />
           </div>
         </div>
@@ -87,6 +120,6 @@ const Profile: React.FC<ProfileProps> = ({ callback, user }) => {
       </Menu>
     </>
   );
-}
+};
 
 export default Profile;
